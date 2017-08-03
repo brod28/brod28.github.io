@@ -1,15 +1,55 @@
-/* Styles go here */
+html, body {
+	margin: 0;
+	padding: 0;
+}
+/*header*/
+header {
+	background-color: #fff;
+    height: 70px;
+	padding: 0 7%;
+    color: #616774;
+	border-bottom: 1px solid #dad7d7;
+}
+.logo-box {
+	display: table;
+    height: 100%;
+}
+.logo-box h1 {
+	font-family: Arial;
+    font-weight: 700;
+    font-size: 28px;
+	letter-spacing: -0.7px;
+	margin: 0;
+	display: table-cell;
+    vertical-align: middle;
+    line-height: 100%;
+}
+
+/*mainCont*/
+.chatFullCont {
+	overflow: hidden;
+	height: calc(100vh - 73px);
+	padding: 0 2px 2px 2px;
+}
+.articleBox, .chatBox {
+	height: 100%;
+	border: 1px solid #dad7d7;
+	border-top: 0;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
 .chatBox {
   font-family: Arial;
   width: 50%;
-  float: left;
-  border: 1px solid #e1e1d5;
+  float: left;  
 }
 .chatHeight {
-  height: 400px;
+  height: calc(100vh - 116px);
   padding: 15px 10px 0 10px;
   box-sizing: border-box;
-  overflow-y: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 .chatBox, .sender, .recipient {
   overflow: hidden;
@@ -45,6 +85,8 @@
   padding: 10px 15px;
   max-width: 60%;
   box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 .recipient, .sender {
   margin: 10px 0;
@@ -56,8 +98,10 @@
 }
 
 .sendMsg {
-  position: relative;
-  
+  position: relative;  
+}
+.sendMsg input {
+	outline-style: none;
 }
 .sendMsg input[type="text"] {
   width: 100%;
@@ -75,6 +119,7 @@
   font-size: 13px;
   height: 100%;
   color: #396ea0;
+  cursor: pointer;
 }
 
 .recipient p {
@@ -84,3 +129,4 @@
   color: white;
   padding: 10px 20px;
 }
+
