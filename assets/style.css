@@ -1,0 +1,86 @@
+/* Styles go here */
+.chatBox {
+  font-family: Arial;
+  width: 50%;
+  float: left;
+  border: 1px solid #e1e1d5;
+}
+.chatHeight {
+  height: 400px;
+  padding: 15px 10px 0 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.chatBox, .sender, .recipient {
+  overflow: hidden;
+}
+.sender {
+  position: relative;
+  min-height: 40px;
+}
+.senderName {
+  display: table;
+  background-color: #276844;
+  color: #ffffff;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.senderName span {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 100%;
+}
+.sender p {
+  margin: 0 0 0 60px;
+  border: 1px solid #dedddd;
+  border-radius: 4px;
+  padding: 10px 15px;
+  max-width: 60%;
+  box-sizing: border-box;
+}
+.recipient, .sender {
+  margin: 10px 0;
+}
+.recipient p, .sender p {
+  font-size: 15px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.sendMsg {
+  position: relative;
+  
+}
+.sendMsg input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+  height: 40px;
+  border-color: #396ea0;
+  padding: 0 50px 0 10px;
+}
+.sendMsg input[type="submit"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  background-color: transparent;
+  font-size: 13px;
+  height: 100%;
+  color: #396ea0;
+}
+
+.recipient p {
+  background-color: #0053aa;
+  border-radius: 50px;
+  float: right;
+  color: white;
+  padding: 10px 20px;
+}
