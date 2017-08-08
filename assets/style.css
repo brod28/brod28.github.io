@@ -45,7 +45,8 @@ header {
   float: left;  
 }
 .chatHeight {
-  height: calc(100vh - 116px);
+  overflow-y: auto;
+  height: calc(100vh - 136px);
   padding: 15px 10px 0 10px;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -89,7 +90,7 @@ header {
   -moz-box-sizing: border-box;
 }
 .recipient, .sender {
-  margin: 10px 0;
+  margin: 20px 0;
 }
 .recipient p, .sender p {
   font-size: 15px;
@@ -98,7 +99,8 @@ header {
 }
 
 .sendMsg {
-  position: relative;  
+  position: relative; 
+  margin-top: 20px;
 }
 .sendMsg input {
 	outline-style: none;
@@ -128,5 +130,35 @@ header {
   float: right;
   color: white;
   padding: 10px 20px;
+}
+
+/*scrollbar*/
+.scrollbarStyle::-webkit-scrollbar-track {
+	border-radius: 10px;
+}
+.scrollbarStyle::-webkit-scrollbar {
+	width: 7px;
+}
+.scrollbarStyle::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: #cccccc;
+}
+/*msg typing*/	
+.dots {
+	margin-left: 60px;
+    border-radius: 50px;
+    padding: 10px 15px;
+	display: inline-block;
+	border: 1px solid #dedddd;
+}
+.dots > span {
+	background-color: #dad9d9;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	display: inline-block;
+}
+.dots > span:not(:first-child) {
+	margin-left: 5px;
 }
 
