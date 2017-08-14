@@ -14,15 +14,9 @@ header {
 	display: table;
     height: 100%;
 }
-.logo-box h1 {
-	font-family: Arial;
-    font-weight: 700;
-    font-size: 28px;
-	letter-spacing: -0.7px;
-	margin: 0;
-	display: table-cell;
-    vertical-align: middle;
-    line-height: 100%;
+.logo-box img {
+	width: 150px;
+	margin-top: 17px;
 }
 
 /*mainCont*/
