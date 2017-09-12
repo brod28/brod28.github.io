@@ -35,10 +35,6 @@
     <script>
 var map;
       function initMap() {
-       var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 8,
-          center: {lat: 55.619577, lng: -1.649977}
-        });
 
    /*     var kmlLayer = new google.maps.KmlLayer({
           url: 'https://brod28.github.io/CCG_BSC_Apr2015.KML',
@@ -54,7 +50,11 @@ var map;
 				// Sending and receiving data in JSON format using POST mothod
 				//
 				function myFunction() {
-				
+				       var map = new google.maps.Map(document.getElementById('map'), {
+					  zoom: 8,
+					  center: {lat: 55.619577, lng: -1.649977}
+					});
+
 				map.setCenter(new google.maps.LatLng(document.getElementById("lat").value*1,document.getElementById("lng").value*1));
 				
 				var data={
