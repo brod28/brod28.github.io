@@ -62,28 +62,9 @@
 					  "departure_time": "2017-09-12T08:00:00Z",
 					  "travel_time": 900
 					}
-				  ],
-				  "arrival_searches": [
-					{
-					  "id": "public transport to Trafalgar Square",
-					  "coords": {
-						"lat": 51.507609,
-						"lng": -0.128315
-					  },
-					  "transportation": {
-						"type": "public_transport"
-					  },
-					  "arrival_time": "2017-09-12T08:00:00Z",
-					  "travel_time": 900,
-					  "range": {
-						"enabled": true,
-						"width": 3600
-					  }
-					}
 				  ]
 				};
 
-				
 				var xhr = new XMLHttpRequest();
 				var url = "https://api.traveltimeapp.com/v4/time-map";
 				xhr.open("POST", url, true);
@@ -91,9 +72,19 @@
 				xhr.setRequestHeader("X-Application-Id", "74f43d5c");
 				xhr.setRequestHeader("X-Api-Key", "3820e39df1473aa672ce200439689f61");
 				xhr.onreadystatechange = function () {
+					var latlon="";
 					if (xhr.readyState === 4 && xhr.status === 200) {
 						var json = JSON.parse(xhr.responseText);
-						console.log(json.email + ", " + json.password);
+						var shape=json.results[0].shapes[0];
+						for (i = 0; i < json.results[0].shapes.length; i++) { 
+						    if(json.results[0].shapes[i].length>shape.length){
+							  shape=json.results[0].shapes[i];  
+						    }
+						}
+						for (i = 0; i < shape.shell.length; i++) { 
+						    latlon=latlon+"("+shape.shell[i].lat+","+shape.shell[i].lng+"),";
+						}
+						alert(latlon);
 					}
 				};
 				var data = JSON.stringify(data);
