@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>KML Layers</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: {lat: 55.619577, lng: -1.649977}
+        });
+
+        var kmlLayer = new google.maps.KmlLayer({
+          url: 'https://brod28.github.io/CCG_BSC_Apr2015.KML',
+          map: map
+        });
+		
+		kmlLayer.addListener('click', function(kmlEvent) {
+          var text = kmlEvent.featureData.description;
+          alert(text);
+        });
+      }
+	  
+	   
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_jyDsWS4RloJpkkqctnIc8SVirGIYgjY&callback=initMap">
+	</script>
+    <script>	
+				// Sending and receiving data in JSON format using POST mothod
+				//
+				
+				var data={
+				  "departure_searches": [
+					{
+					  "id": "public transport from Trafalgar Square",
+					  "coords": {
+						"lat": 51.507609,
+						"lng": -0.128315
+					  },
+					  "transportation": {
+						"type": "public_transport"
+					  },
+					  "departure_time": "2017-09-12T08:00:00Z",
+					  "travel_time": 900
+					}
+				  ],
+				  "arrival_searches": [
+					{
+					  "id": "public transport to Trafalgar Square",
+					  "coords": {
+						"lat": 51.507609,
+						"lng": -0.128315
+					  },
+					  "transportation": {
+						"type": "public_transport"
+					  },
+					  "arrival_time": "2017-09-12T08:00:00Z",
+					  "travel_time": 900,
+					  "range": {
+						"enabled": true,
+						"width": 3600
+					  }
+					}
+				  ]
+				};
+
+				
+				var xhr = new XMLHttpRequest();
+				var url = "https://api.traveltimeapp.com/v4/time-map";
+				xhr.open("POST", url, true);
+				xhr.setRequestHeader("Content-type", "application/json");
+				xhr.setRequestHeader("X-Application-Id", "74f43d5c");
+				xhr.setRequestHeader("X-Api-Key", "3820e39df1473aa672ce200439689f61");
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState === 4 && xhr.status === 200) {
+						var json = JSON.parse(xhr.responseText);
+						console.log(json.email + ", " + json.password);
+					}
+				};
+				var data = JSON.stringify(data);
+				xhr.send(data);
+    </script>
+  </body>
+</html>
