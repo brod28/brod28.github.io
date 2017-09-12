@@ -57,6 +57,24 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_jyDsWS4RloJpkkqctnIc8SVirGIYgjY&callback=initMap">
 	</script>
     <script>	
+	    var data1={
+				  "departure_searches": [
+					{
+					  "id": "public transport from Trafalgar Square",
+					  "coords": {
+						"lat":  document.getElementById("lat").value*1,
+						"lng":  document.getElementById("lng").value*1
+					  },
+					  "transportation": {
+						"type": "public_transport"
+					  },
+					  "departure_time": "2017-09-12T08:00:00Z",
+					  "travel_time": document.getElementById("travel_time").value*60
+					}
+				  ]
+				};
+	    	</script>
+    <script>	
 				// Sending and receiving data in JSON format using POST mothod
 				//
 				function myFunction() {
