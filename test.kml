@@ -3059,6 +3059,7 @@
 		</Placemark>
 		<Placemark>
 			<name>NW</name>
+			<description>hi guy</description>
 			<LookAt>
 				<longitude>-0.207586</longitude>
 				<latitude>51.578865</latitude>
