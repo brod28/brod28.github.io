@@ -30,8 +30,8 @@
 
 <input type="text" id="travel_time" value="">
 	  <button onclick="myFunction()">get the shape</button>
-<div id="points"></div>
     <div id="map"></div>
+<div id="points"></div>
     <script>
 var map;
       function initMap() {
@@ -87,7 +87,6 @@ var map;
 						for (i = 0; i < shape.shell.length; i++) { 
 						    latlon=latlon+"("+shape.shell[i].lat+","+shape.shell[i].lng+"),";
 						}
-						alert(latlon);
 						 var map = new google.maps.Map(document.getElementById('map'), {
 							  zoom: 8,
 							  center: {lat: 55.619577, lng: -1.649977}
