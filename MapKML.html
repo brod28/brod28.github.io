@@ -33,9 +33,9 @@
 
     <div id="map"></div>
     <script>
-
+var map;
       function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
           zoom: 8,
           center: {lat: 55.619577, lng: -1.649977}
         });
@@ -51,33 +51,12 @@
         });*/
       }
 	  
-	   
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_jyDsWS4RloJpkkqctnIc8SVirGIYgjY&callback=initMap">
-	</script>
-    <script>	
-	    var data1={
-				  "departure_searches": [
-					{
-					  "id": "public transport from Trafalgar Square",
-					  "coords": {
-						"lat":  document.getElementById("lat").value*1,
-						"lng":  document.getElementById("lng").value*1
-					  },
-					  "transportation": {
-						"type": "public_transport"
-					  },
-					  "departure_time": "2017-09-12T08:00:00Z",
-					  "travel_time": document.getElementById("travel_time").value*60
-					}
-				  ]
-				};
-	    	</script>
-    <script>	
 				// Sending and receiving data in JSON format using POST mothod
 				//
 				function myFunction() {
+				
+				map.setCenter(new google.maps.LatLng(document.getElementById("lat").value*,document.getElementById("lng").value*1));
+				
 				var data={
 				  "departure_searches": [
 					{
@@ -116,11 +95,28 @@
 						}
 						alert(latlon);
 					}
+					    // Define the LatLng coordinates for the polygon's path.
+
+  // Construct the polygon.
+  var bermudaTriangle = new google.maps.Polygon({
+    paths: shape.shell,
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#FF0000',
+    fillOpacity: 0.35
+  });
+  bermudaTriangle.setMap(map)
 				};
 				var data = JSON.stringify(data);
 				xhr.send(data);
 				
 				}
+	   
     </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_jyDsWS4RloJpkkqctnIc8SVirGIYgjY&callback=initMap">
+	</script>
+
   </body>
 </html>
