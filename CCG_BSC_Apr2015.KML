@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><kml xmlns="http://earth.google.com/kml/2.1"><Folder><description><![CDATA[CCG Boundaries April 2015]]></description>
-<Placemark><name><![CDATA[Northumberland]]></name><description><![CDATA[<br><br><br>
+<Placemark><name><![CDATA[Northumberland]]></name><price><price1>1212</price1></price><description><![CDATA[<br><br><br>
     <table border="1" padding="0">
       <tr><td>CCGcode</td><td>00L</td></tr>
       <tr><td>CCGname_short</td><td>Northumberland</td></tr>
