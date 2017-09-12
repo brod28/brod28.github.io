@@ -19,6 +19,18 @@
     </style>
   </head>
   <body>
+	  <h3>lat</h3>
+
+<input type="text" id="lat" value="">
+	  <h3>lng</h3>
+
+	<input type="text" id="lng" value="">
+
+	  <h3>time in minutes</h3>
+
+<input type="text" id="travel_time" value="">
+	  <button onclick="myFunction()">get the shape</button>
+
     <div id="map"></div>
     <script>
 
@@ -28,7 +40,7 @@
           center: {lat: 55.619577, lng: -1.649977}
         });
 
-        var kmlLayer = new google.maps.KmlLayer({
+   /*     var kmlLayer = new google.maps.KmlLayer({
           url: 'https://brod28.github.io/CCG_BSC_Apr2015.KML',
           map: map
         });
@@ -36,7 +48,7 @@
 		kmlLayer.addListener('click', function(kmlEvent) {
           var text = kmlEvent.featureData.description;
           alert(text);
-        });
+        });*/
       }
 	  
 	   
@@ -47,20 +59,20 @@
     <script>	
 				// Sending and receiving data in JSON format using POST mothod
 				//
-				
+				function myFunction() {
 				var data={
 				  "departure_searches": [
 					{
 					  "id": "public transport from Trafalgar Square",
 					  "coords": {
-						"lat": 51.507609,
-						"lng": -0.128315
+						"lat": = document.getElementById("lat").value,
+						"lng": = document.getElementById("lng").value
 					  },
 					  "transportation": {
 						"type": "public_transport"
 					  },
 					  "departure_time": "2017-09-12T08:00:00Z",
-					  "travel_time": 900
+					  "travel_time": document.getElementById("travel_time").value*60
 					}
 				  ]
 				};
@@ -89,6 +101,8 @@
 				};
 				var data = JSON.stringify(data);
 				xhr.send(data);
+				
+				}
     </script>
   </body>
 </html>
