@@ -32,6 +32,13 @@
            map: map		
          });
       }
+      
+      function myFunction(){
+         var kmlLayer = new google.maps.KmlLayer({		
+           url: document.getElementById("KML").value,		
+           map: map		
+         });
+      }
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_jyDsWS4RloJpkkqctnIc8SVirGIYgjY&callback=initMap">
