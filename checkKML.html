@@ -11,7 +11,7 @@
 <input type="text" id="lat" value="51.5007292">
 	  lng
 
-	<input type="text" id="lng" value="-0.1246254,15">
+	<input type="text" id="lng" value="-0.1246254">
 		link to KMZ/KML
 	  <input type="text" id="KML" value="https://brod28.github.io/CCG_BSC_Apr2015.KML">
 	  <button onclick="myFunction()">show the shape</button>
@@ -21,7 +21,7 @@
 	function initMap(){
 		map = new google.maps.Map(document.getElementById('map'), {
 		  zoom: 8,
-		  center: {lat:51.5007292, lng: -0.1246254,15}
+		   center: {lat: document.getElementById("lat").value*1, lng: document.getElementById("lng").value*1}
 		});
 	}
 						
