@@ -1,8 +1,218 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><title>MyDreamApp</title><base href="/"><link rel="stylesheet" href="assets/style.css"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="favicon.ico"><link href="styles.d41d8cd98f00b204e980.bundle.css" rel="stylesheet"/></head><body><app-root></app-root><script type="text/javascript" src="inline.78a064981d0a9515c66f.bundle.js"></script><script type="text/javascript" src="polyfills.3ae08eaf6129a55130cb.bundle.js"></script><script type="text/javascript" src="vendor.6162e2ce40f595f0cc4f.bundle.js"></script><script type="text/javascript" src="main.b5b318c1cd14c109ed3d.bundle.js"></script></body><script>!function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="4.0.0";
-  analytics.load("hTc8Gu30keN08X2Xtvppp0tiNry1AQkQ");
-	analytics.page();
-	analytics.track('Clicked CTA', {
-		location: 'header',
-		type: 'button'
-	});
-  }}();</script></html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple Polygon</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      /*css for the info box*/
+      .gm-style-iw {
+          width: 150px !important;
+          top: 15px !important;
+          left: 350px !important;
+          background-color: black;
+          color: white;
+          text-align: center;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+
+      var last;
+      // opacity for zone not recommended
+      var opacity_no_rec=0.2;
+      // opacity for zone recommended
+      var opacity_rec=0.35;
+      //color for not selected area
+      var color_not_selected="#228B22";
+      //color for not selected area
+      var color_over="#0B6623";
+      //color for selected area
+      var color_selected='#696969';
+      // reference to infobox/tooltip
+      var infowindow;
+
+
+      // This example creates a simple polygon representing the Bermuda Triangle.
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 14,
+          center: {lat: 40.758896, lng: -73.985130},
+          mapTypeId: 'terrain'
+        });
+
+        // Coordinats for example
+        var triangleCoords = [
+          {lat: 		40.758896, lng: -73.985130},
+          {lat: 		40.768896, lng: -73.985130},
+          {lat: 		40.768896, lng: -73.995130},
+          {lat: 		40.758896, lng: -73.995130}
+        ];
+
+        // object requered to draw the area
+        var req={
+          triangleCoords:triangleCoords,
+          opacity:opacity_rec,
+          zone_name:"e1",
+          map:map,
+          infowindow:infowindow
+        }
+
+        // draw the shape of the area on the map and add listners for click, mouseover and mouseout
+        draw(req);
+        
+        var triangleCoords = [
+          {lat: 		40.758896, lng: -73.985130},
+          {lat: 		40.748896, lng: -73.985130},
+          {lat: 		40.748896, lng: -73.995130},
+          {lat: 		40.758896, lng: -73.995130}
+        ];
+        var req={
+          triangleCoords:triangleCoords,
+          opacity:opacity_rec,
+          zone_name:"e2",
+          map:map,
+          infowindow:infowindow
+        }
+        draw(req);
+
+        // Coordinats for example
+        var triangleCoords = [
+          {lat: 		40.768896, lng: -73.985130},
+          {lat: 		40.778896, lng: -73.985130},
+          {lat: 		40.778896, lng: -73.995130},
+          {lat: 		40.768896, lng: -73.995130}
+        ];
+
+
+        var req={
+          triangleCoords:triangleCoords,
+          opacity:opacity_no_rec,
+          zone_name:"e3",
+          map:map,
+          infowindow:infowindow
+        }
+        draw(req);
+
+      }
+
+      function draw(req){
+        
+        // Construct the polygon.
+        var Polygon = new google.maps.Polygon({
+          paths: req.triangleCoords,
+          strokeColor: color_not_selected,
+          strokeOpacity: 0.6,
+          strokeWeight: 2,
+          fillColor: color_not_selected,
+          fillOpacity: req.opacity
+        });
+
+        // draw the area on the map
+        Polygon.setMap(req.map);
+
+        // add the poligon to request
+        req.Polygon=Polygon;
+
+        // add 3 listners to the polygon
+        addListener(req);
+
+        
+      }
+
+      function addListener(req){
+
+        // remove all old listners
+        google.maps.event.clearListeners(req.Polygon,"mouseover");
+        google.maps.event.clearListeners(req.Polygon,"mouseout");
+        google.maps.event.clearListeners(req.Polygon,"click");
+    
+        // listner in case mouse over
+        google.maps.event.addListener(req.Polygon,"mouseover",function(){
+          // change color and add opacity
+          this.setOptions({
+            fillOpacity: 0.75,
+            fillColor: color_over,
+            strokeColor: color_over
+          });
+
+          // create infobox with the zone name
+          req.infowindow = new google.maps.InfoWindow({
+            content: req.zone_name
+          });
+          // open infobox 
+          req.infowindow.open(req.map, req.map);
+        }); 
+
+        // listner in case mouse out
+        google.maps.event.addListener(req.Polygon,"mouseout",function(){
+          // return the color and the opacity to old mode
+          this.setOptions({ 
+            fillOpacity: req.opacity,
+            fillColor: color_not_selected,
+            strokeColor: color_not_selected
+          });
+          // close the infobox with zone name
+          req.infowindow.close(map, map);
+        }); 
+
+        // listner in case of click
+        google.maps.event.addListener(req.Polygon,"click",function(){
+          // change the color and the opacity
+          this.setOptions({ 
+            fillOpacity: 0.75,
+            fillColor: color_selected,
+            strokeColor: color_selected
+          });
+
+          // clean all the old listners 
+          google.maps.event.clearListeners(req.Polygon,"mouseover");
+          google.maps.event.clearListeners(req.Polygon,"mouseout");
+          google.maps.event.clearListeners(req.Polygon,"click");
+          
+          // add listener that just open the infobox (this listner works just in case area already clicked)
+          google.maps.event.addListener(req.Polygon,"mouseover",function(){
+            req.infowindow = new google.maps.InfoWindow({
+              content: req.zone_name
+            });
+            req.infowindow.open(req.map, req.map);
+          }); 
+
+          // add listener that just close the infobox (this listner works just in case area already clicked)
+          google.maps.event.addListener(req.Polygon,"mouseout",function(){
+            req.infowindow.close(req.map, req.map);
+          }); 
+
+          // if other polygon was clicked already 
+          if(last!=undefined){
+            // remove last polygon was clicked
+            last.Polygon.setMap(null);
+            // add last polygon was clicked as new (with green color and new listners)
+            draw(last);
+          }
+          // store that this is the last polygonc that was clicked
+          last=req;
+        });
+
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_jyDsWS4RloJpkkqctnIc8SVirGIYgjY&callback=initMap">
+    </script>
+  </body>
+</html>
