@@ -35,7 +35,7 @@
 
       var last;
       // opacity for zone not recommended
-      var opacity_no_rec=0.2;
+      var opacity_no_rec=0.35;
       // opacity for zone recommended
       var opacity_rec=0.35;
       //color for not selected area
@@ -109,8 +109,112 @@
         }
         draw(req);
 
-      }
+        var triangleCoords = [
+          {lat: 		40.768896, lng: -73.975130},
+          {lat: 		40.778896, lng: -73.975130},
+          {lat: 		40.778896, lng: -73.985130},
+          {lat: 		40.768896, lng: -73.985130}
+        ];
 
+
+        var req={
+          triangleCoords:triangleCoords,
+          opacity:opacity_no_rec,
+          zone_name:"e4",
+          map:map,
+          infowindow:infowindow
+        }
+        draw(req);
+
+        var triangleCoords = [
+          {lat: 		40.758896, lng: -73.975130},
+          {lat: 		40.768896, lng: -73.975130},
+          {lat: 		40.768896, lng: -73.985130},
+          {lat: 		40.758896, lng: -73.985130}
+        ];
+
+
+        var req={
+          triangleCoords:triangleCoords,
+          opacity:opacity_no_rec,
+          zone_name:"e5",
+          map:map,
+          infowindow:infowindow
+        }
+        draw(req);
+      
+
+        var triangleCoords = [
+          {lat: 		40.748896, lng: -73.975130},
+          {lat: 		40.758896, lng: -73.975130},
+          {lat: 		40.758896, lng: -73.985130},
+          {lat: 		40.748896, lng: -73.985130}
+        ];
+
+
+        var req={
+          triangleCoords:triangleCoords,
+          opacity:opacity_no_rec,
+          zone_name:"e6",
+          map:map,
+          infowindow:infowindow
+        }
+        draw(req);
+
+
+        var triangleCoords = [
+          {lat: 		40.768896, lng: -73.965130},
+          {lat: 		40.778896, lng: -73.965130},
+          {lat: 		40.778896, lng: -73.975130},
+          {lat: 		40.768896, lng: -73.975130}
+        ];
+
+
+        var req={
+          triangleCoords:triangleCoords,
+          opacity:opacity_no_rec,
+          zone_name:"e7",
+          map:map,
+          infowindow:infowindow
+        }
+        draw(req);
+
+        var triangleCoords = [
+          {lat: 		40.758896, lng: -73.965130},
+          {lat: 		40.768896, lng: -73.965130},
+          {lat: 		40.768896, lng: -73.975130},
+          {lat: 		40.758896, lng: -73.975130}
+        ];
+
+
+        var req={
+          triangleCoords:triangleCoords,
+          opacity:opacity_no_rec,
+          zone_name:"e8",
+          map:map,
+          infowindow:infowindow
+        }
+        draw(req);
+      
+
+        var triangleCoords = [
+          {lat: 		40.748896, lng: -73.965130},
+          {lat: 		40.758896, lng: -73.965130},
+          {lat: 		40.758896, lng: -73.975130},
+          {lat: 		40.748896, lng: -73.975130}
+        ];
+
+
+        var req={
+          triangleCoords:triangleCoords,
+          opacity:opacity_no_rec,
+          zone_name:"e9",
+          map:map,
+          infowindow:infowindow
+        }
+        draw(req);
+
+      }
       function draw(req){
         
         // Construct the polygon.
